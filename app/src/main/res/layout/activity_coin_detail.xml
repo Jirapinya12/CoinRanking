@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fake_white">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fake_white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNameHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textColor="@color/fake_black"
+                android:textSize="22dp"
+                tools:text="Bitcoin" />
+
+            <ImageView
+                android:id="@+id/ivCoin"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp"
+                tools:src="@color/lighter_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:id="@+id/tvCoinDetail"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/coin_details"
+                    android:textAllCaps="true" />
+
+                <ImageView
+                    android:id="@+id/ivColor"
+                    android:layout_width="43dp"
+                    android:layout_height="63dp"
+                    android:layout_below="@+id/tvCoinDetail"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:scaleType="centerCrop"
+                    tools:background="@color/purple_500" />
+
+
+                <TextView
+                    android:id="@+id/tvColor"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/ivColor"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ivColor"
+                    android:layout_toRightOf="@+id/ivColor"
+                    android:text="@string/color"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/ivColor"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/tvColor"
+                    android:layout_toRightOf="@+id/tvColor"
+                    android:gravity="end"
+                    android:text="@string/name"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tvColorData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvColor"
+                    android:layout_toEndOf="@+id/ivColor"
+                    android:layout_toRightOf="@+id/ivColor"
+                    tools:text="#f7931A" />
+
+                <TextView
+                    android:id="@+id/tvNameData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvName"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/tvColorData"
+                    android:layout_toRightOf="@+id/tvColorData"
+                    android:gravity="end"
+                    tools:text="BTC" />
+                
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:id="@+id/tvBtcPrice"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btcPrice"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tvSymbol"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/tvBtcPrice"
+                    android:layout_toRightOf="@+id/tvBtcPrice"
+                    android:gravity="end"
+                    android:text="@string/symbol"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tvBtcPriceData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvBtcPrice"
+                    tools:text="1" />
+
+                <TextView
+                    android:id="@+id/tvSymbolData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvSymbol"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/tvBtcPriceData"
+                    android:layout_toRightOf="@+id/tvBtcPriceData"
+                    android:gravity="end"
+                    tools:text="BTC" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:id="@+id/tvMarketCap"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/marketCap"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/tvMarketCap"
+                    android:layout_toRightOf="@+id/tvMarketCap"
+                    android:gravity="end"
+                    android:text="@string/price"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tvMarketCapData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvMarketCap"
+                    tools:text="885063176691" />
+
+                <TextView
+                    android:id="@+id/tvPriceData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPrice"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/tvMarketCapData"
+                    android:layout_toRightOf="@+id/tvMarketCapData"
+                    android:gravity="end"
+                    tools:text="46573.9087638882" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:id="@+id/tvChange"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tv24hVolume"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/tvChange"
+                    android:layout_toRightOf="@+id/tvChange"
+                    android:gravity="end"
+                    android:text="@string/twenty_four_hVolume"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tvChangeData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvChange"
+                    tools:text="1.28" />
+
+                <TextView
+                    android:id="@+id/tv24hVolumeData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv24hVolume"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/tvChangeData"
+                    android:layout_toRightOf="@+id/tvChangeData"
+                    android:gravity="end"
+                    tools:text="27270887710" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lighter_gray"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:id="@+id/tvCoinrankingUrl"
+                    style="@style/TextDarkGray20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/coinrankingUrl"
+                    android:textAllCaps="true" />
+
+                <TextView
+                    android:id="@+id/tvCoinrankingUrlData"
+                    style="@style/TextFakeBlack24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvCoinrankingUrl"
+                    tools:text="https://coinranking.com/coin/Qwsogvtv82FCd+bitcoin-btc" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

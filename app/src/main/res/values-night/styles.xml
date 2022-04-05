@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="TextFakeBlack24">
+        <item name="android:textColor">@color/fake_black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextDarkGray20">
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>

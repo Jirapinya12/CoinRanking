@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">MVPpattern</string>
+    <string name="app_name">CoinRanking</string>
+    <string name="coin_details">coin details</string>
+    <string name="marketCap">marketCap</string>
+    <string name="btcPrice">btc Price</string>
+    <string name="color">color</string>
+    <string name="price">price</string>
+    <string name="symbol">symbol</string>
+    <string name="name">name</string>
+    <string name="change">change</string>
+    <string name="coinrankingUrl">coinrankingUrl</string>
+    <string name="twenty_four_hVolume">24hVolume</string>
 </resources>

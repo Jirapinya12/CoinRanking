@@ -12,11 +12,12 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.scb.mvppattern.R
 import com.scb.mvppattern.adapter.MyAdapter
+import com.scb.mvppattern.interfaces.CoinClickListener
 import com.scb.mvppattern.interfaces.CoinContractor
 import com.scb.mvppattern.model.datamodel.Coins
 import com.scb.mvppattern.presenter.MainPresenter
 
-class MainActivity : AppCompatActivity(), CoinContractor.View {
+class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener {
 
     @BindView(R.id.rvList)
     lateinit var rvList: RecyclerView
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity(), CoinContractor.View {
     override fun updateViewData(coins: List<Coins>?) {
         rvList.layoutManager = LinearLayoutManager(this)
         coins?.let {
-            val myAdapter = MyAdapter(it, this)
+            val myAdapter = MyAdapter(it, this, this)
             rvList.adapter = myAdapter
             rvList.isNestedScrollingEnabled = false
         }
@@ -56,5 +57,9 @@ class MainActivity : AppCompatActivity(), CoinContractor.View {
 
     override fun showProgressBarLoading(isLoading: Boolean) {
         pbLoadingView.visibility = if (isLoading) VISIBLE else GONE
+    }
+
+    override fun onCoinClickListener(data: Coins) {
+        startActivity(CoinDetailActivity.createIntent(this, data))
     }
 }

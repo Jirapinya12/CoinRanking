@@ -1,6 +1,8 @@
 package com.scb.mvppattern.model.datamodel
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 data class BaseDataEntity(
     @SerializedName("status") val status: String,
@@ -12,6 +14,7 @@ data class Data(
     @SerializedName("coins") val coins: List<Coins>
 )
 
+@Parcelize
 data class Coins(
     @SerializedName("uuid") val uuid: String,
     @SerializedName("symbol") val symbol: String,
@@ -29,7 +32,7 @@ data class Coins(
     @SerializedName("coinrankingUrl") val coinrankingUrl: String,
     @SerializedName("24hVolume") val twentyFourHVolume : String,
     @SerializedName("btcPrice") val btcPrice: Double
-)
+): Parcelable
 
 data class Stats(
     @SerializedName("total") val total: Int,
