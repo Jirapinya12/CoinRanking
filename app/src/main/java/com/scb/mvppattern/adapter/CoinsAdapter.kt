@@ -64,7 +64,7 @@ class CoinsAdapter(
             tvDesc.text = model.btcPrice.toString()
             iv.loadImageFromUrl(model.iconUrl, progressDrawable)
             itemView.setOnClickListener {
-                coinClickListener.onCoinClickListener(model)
+                coinClickListener.onCoinClickListener(model.uuid)
             }
         }
     }

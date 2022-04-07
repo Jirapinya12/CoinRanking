@@ -4,15 +4,21 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.NestedScrollView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.scb.mvppattern.R
-import com.scb.mvppattern.model.datamodel.Coins
+import com.scb.mvppattern.interfaces.CoinDetailContractor
+import com.scb.mvppattern.model.datamodel.Coin
+import com.scb.mvppattern.presenter.CoinDetailPresenter
 
-class CoinDetailActivity : AppCompatActivity() {
+class CoinDetailActivity : AppCompatActivity(), CoinDetailContractor.View {
 
     @BindView(R.id.tvNameHead)
     lateinit var tvNameHead: TextView
@@ -50,6 +56,14 @@ class CoinDetailActivity : AppCompatActivity() {
     @BindView(R.id.ivColor)
     lateinit var ivColor: ImageView
 
+    @BindView(R.id.pbLoadingView)
+    lateinit var pbLoadingView: ProgressBar
+
+    @BindView(R.id.nestedScrollViewCoinDetail)
+    lateinit var nestedScrollViewCoinDetail: NestedScrollView
+
+    private lateinit var coinDetailPresenter: CoinDetailPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coin_detail)
@@ -58,8 +72,27 @@ class CoinDetailActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        val coins = intent?.getParcelableExtra<Coins>(EXTRA_COIN_MODEL)
-        coins?.apply {
+        coinDetailPresenter = CoinDetailPresenter(this)
+        coinDetailPresenter.getCoinsDetail(intent?.getStringExtra(EXTRA_UUID))
+    }
+
+    companion object {
+        const val EXTRA_UUID = "EXTRA_COIN_MODEL"
+
+        @JvmStatic
+        fun createIntent(
+            context: Context,
+            uuid: String
+        ): Intent {
+            return Intent(context, CoinDetailActivity::class.java).apply {
+                putExtra(EXTRA_UUID, uuid)
+            }
+        }
+    }
+
+    override fun updateViewCoinDetailData(coins: Coin) {
+        nestedScrollViewCoinDetail.visibility = VISIBLE
+        coins.apply {
             tvNameHead.text = name
             tvNameData.text = name
             tvBtcPriceData.text = btcPrice.toString()
@@ -70,22 +103,23 @@ class CoinDetailActivity : AppCompatActivity() {
             tv24hVolumeData.text = twentyFourHVolume
             tvCoinRankingUrlData.text = coinrankingUrl
             tvColorData.text = color
-            ivColor.setBackgroundColor(Color.parseColor(color))
-            ivCoin.loadImageFromUrl(iconUrl, getProgressDrawable(context = this@CoinDetailActivity))
+            color?.let {
+                ivColor.setBackgroundColor(Color.parseColor(it))
+            }
+            iconUrl?.let {
+                ivCoin.loadImageFromUrl(
+                    it,
+                    getProgressDrawable(context = this@CoinDetailActivity)
+                )
+            }
         }
     }
 
-    companion object {
-        const val EXTRA_COIN_MODEL = "EXTRA_COIN_MODEL"
+    override fun showProgressBarLoading(isLoading: Boolean) {
+        pbLoadingView.visibility = if (isLoading) VISIBLE else GONE
+    }
 
-        @JvmStatic
-        fun createIntent(
-            context: Context,
-            coins: Coins
-        ): Intent {
-            return Intent(context, CoinDetailActivity::class.java).apply {
-                putExtra(EXTRA_COIN_MODEL, coins)
-            }
-        }
+    override fun showGetCoinsDetailFailed() {
+        nestedScrollViewCoinDetail.visibility = GONE
     }
 }

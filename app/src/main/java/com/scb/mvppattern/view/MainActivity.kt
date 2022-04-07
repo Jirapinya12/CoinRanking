@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener
         pbLoadingView.visibility = if (isLoading) VISIBLE else GONE
     }
 
-    override fun onCoinClickListener(data: Coins) {
-        startActivity(CoinDetailActivity.createIntent(this, data))
+    override fun onCoinClickListener(uuid: String) {
+        startActivity(CoinDetailActivity.createIntent(this, uuid))
     }
 }

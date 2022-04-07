@@ -68,6 +68,9 @@ class TopCoinsAdapter(
         override fun bindItem(item: BestCoins, coinClickListener: CoinClickListener) {
             tvTitle.text = item.name
             ivCoin.loadImageFromUrl(item.iconUrl, progressDrawable)
+            itemView.setOnClickListener {
+                coinClickListener.onCoinClickListener(item.uuid)
+            }
         }
     }
 }
