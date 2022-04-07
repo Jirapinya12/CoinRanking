@@ -12,4 +12,8 @@
     <color name="lighter_gray">#EAE7EC</color>
     <color name="dark_gray">#736E78</color>
     <color name="fake_white">#F5F3F6</color>
+
+    <color name="bg">#F5F3F6</color>
+    <color name="dot_color">#F8932C8E</color>
+    <color name="header_color">#D3353239</color>
 </resources>

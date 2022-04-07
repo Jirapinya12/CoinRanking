@@ -5,15 +5,20 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.scb.mvppattern.R
-import com.scb.mvppattern.adapter.MyAdapter
+import com.scb.mvppattern.adapter.CoinsAdapter
+import com.scb.mvppattern.adapter.HeaderAdapter
+import com.scb.mvppattern.adapter.HorizontalAdapter
+import com.scb.mvppattern.adapter.TopCoinsAdapter
 import com.scb.mvppattern.interfaces.CoinClickListener
 import com.scb.mvppattern.interfaces.CoinContractor
+import com.scb.mvppattern.model.datamodel.BestCoins
 import com.scb.mvppattern.model.datamodel.Coins
 import com.scb.mvppattern.presenter.MainPresenter
 
@@ -46,13 +51,22 @@ class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener
         }
     }
 
-    override fun updateViewData(coins: List<Coins>?) {
+    override fun updateViewData(bestCoins: List<BestCoins>?, coins: List<Coins>?) {
+        val topCoinsAdapter = bestCoins?.let { TopCoinsAdapter(it, this, this) }
+        val coinsAdapter = coins?.let { CoinsAdapter(it, this, this) }
+        val concatAdapter = ConcatAdapter(
+            HeaderAdapter(this, "Top coins"),
+            topCoinsAdapter?.let {
+                HorizontalAdapter(
+                    this,
+                    it
+                )
+            },
+            HeaderAdapter(this, "Coins"),
+            coinsAdapter,
+        )
         rvList.layoutManager = LinearLayoutManager(this)
-        coins?.let {
-            val myAdapter = MyAdapter(it, this, this)
-            rvList.adapter = myAdapter
-            rvList.isNestedScrollingEnabled = false
-        }
+        rvList.adapter = concatAdapter
     }
 
     override fun showProgressBarLoading(isLoading: Boolean) {

@@ -15,13 +15,34 @@ import com.scb.mvppattern.model.datamodel.Coins
 import com.scb.mvppattern.view.getProgressDrawable
 import com.scb.mvppattern.view.loadImageFromUrl
 
-class MyAdapter(
+class CoinsAdapter(
     var value: List<Coins>,
     var context: Context,
     var coinClickListener: CoinClickListener
-) :
-    RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+) : RecyclerView.Adapter<BaseViewHolder<*>>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+        return CoinViewHolder(
+            LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false)
+        )
+    }
+
+    override fun getItemCount(): Int {
+        return value.size
+    }
+
+    override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
+        when (holder) {
+            is CoinViewHolder -> holder.bindItem(
+                value[position],
+                coinClickListener
+            )
+            else -> throw IllegalArgumentException(
+                "No viewholder to show this data, did you forgot to add it to the onBindViewHolder?")
+        }
+    }
+
+    inner class CoinViewHolder(itemView: View) : BaseViewHolder<Coins>(itemView) {
 
         @BindView(R.id.iv)
         lateinit var iv: ImageView
@@ -38,7 +59,7 @@ class MyAdapter(
             ButterKnife.bind(this, itemView)
         }
 
-        fun bindItem(model: Coins, coinClickListener: CoinClickListener) {
+        override fun bindItem(model: Coins, coinClickListener: CoinClickListener) {
             tvTitle.text = model.name
             tvDesc.text = model.btcPrice.toString()
             iv.loadImageFromUrl(model.iconUrl, progressDrawable)
@@ -46,18 +67,5 @@ class MyAdapter(
                 coinClickListener.onCoinClickListener(model)
             }
         }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val v = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false)
-        return MyViewHolder(v)
-    }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bindItem(value[position], coinClickListener)
-    }
-
-    override fun getItemCount(): Int {
-        return value.size
     }
 }

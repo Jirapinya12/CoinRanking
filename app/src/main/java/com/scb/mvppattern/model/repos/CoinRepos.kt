@@ -26,7 +26,11 @@ class CoinRepos : CoinContractor.CoinModel {
                 response: Response<BaseDataEntity>
             ) {
                 if (response.isSuccessful) {
-                    presenter.getCoinsSuccess(response.body()?.data?.coins)
+                    response.body()?.data?.apply {
+                        presenter.getCoinsSuccess(
+                            stats.bestCoins, coins
+                        )
+                    }
                 } else {
                     presenter.getCoinsFailed()
                 }
