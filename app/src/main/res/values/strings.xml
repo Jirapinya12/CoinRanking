@@ -10,4 +10,6 @@
     <string name="change">change</string>
     <string name="coinrankingUrl">coinrankingUrl</string>
     <string name="twenty_four_hVolume">24hVolume</string>
+    <string name="custom_static_error_description">Something went wrong. Please check your internet connection and try again.</string>
+    <string name="custom_static_tap_to_retry">Tap to retry</string>
 </resources>

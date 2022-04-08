@@ -3,8 +3,12 @@ package com.scb.mvppattern.view
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +37,15 @@ class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener
     @BindView(R.id.swipeRefreshLayout)
     lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
+    @BindView(R.id.coinNestedScrollView)
+    lateinit var coinNestedScrollView: NestedScrollView
+
+    @BindView(R.id.layout_error)
+    lateinit var layoutError: LinearLayout
+
+    @BindView(R.id.tvErrorTapToRetry)
+    lateinit var tvErrorTapToRetry: TextView
+
     lateinit var mainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +54,14 @@ class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener
         ButterKnife.bind(this)
         mainPresenter = MainPresenter(this)
         initView()
+        tvErrorTapToRetry.setOnClickListener {
+            mainPresenter.getAllCoins()
+            Toast.makeText(
+                this@MainActivity,
+                "Click Retry",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun initView() {
@@ -67,10 +88,17 @@ class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener
         )
         rvList.layoutManager = LinearLayoutManager(this)
         rvList.adapter = concatAdapter
+        layoutError.visibility = GONE
+        coinNestedScrollView.visibility = VISIBLE
     }
 
     override fun showProgressBarLoading(isLoading: Boolean) {
         pbLoadingView.visibility = if (isLoading) VISIBLE else GONE
+    }
+
+    override fun showGetCoinsFailed() {
+        coinNestedScrollView.visibility = GONE
+        layoutError.visibility = VISIBLE
     }
 
     override fun onCoinClickListener(uuid: String) {

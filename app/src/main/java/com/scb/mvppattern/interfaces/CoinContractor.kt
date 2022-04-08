@@ -10,6 +10,7 @@ interface CoinContractor {
     interface View{
         fun updateViewData(bestCoins: List<BestCoins>?, coins: List<Coins>?)
         fun showProgressBarLoading(isLoading: Boolean)
+        fun showGetCoinsFailed()
     }
 
     interface Presenter{

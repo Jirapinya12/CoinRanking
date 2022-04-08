@@ -10,10 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            layout="@layout/retry_error_layout" />
+
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedScrollView"
+            android:id="@+id/coinNestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvList"
@@ -25,10 +29,10 @@
             android:id="@+id/pbLoadingView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
+            app:layout_constraintBottom_toBottomOf="@+id/coinNestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/nestedScrollView" />
+            app:layout_constraintTop_toTopOf="@+id/coinNestedScrollView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

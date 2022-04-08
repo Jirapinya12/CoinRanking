@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import butterknife.BindView
@@ -62,6 +64,12 @@ class CoinDetailActivity : AppCompatActivity(), CoinDetailContractor.View {
     @BindView(R.id.nestedScrollViewCoinDetail)
     lateinit var nestedScrollViewCoinDetail: NestedScrollView
 
+    @BindView(R.id.layout_error)
+    lateinit var layoutError: LinearLayout
+
+    @BindView(R.id.tvErrorTapToRetry)
+    lateinit var tvErrorTapToRetry: TextView
+
     private lateinit var coinDetailPresenter: CoinDetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,8 +80,17 @@ class CoinDetailActivity : AppCompatActivity(), CoinDetailContractor.View {
     }
 
     private fun initView() {
+        val uuid = intent?.getStringExtra(EXTRA_UUID)
         coinDetailPresenter = CoinDetailPresenter(this)
-        coinDetailPresenter.getCoinsDetail(intent?.getStringExtra(EXTRA_UUID))
+        coinDetailPresenter.getCoinsDetail(uuid)
+        tvErrorTapToRetry.setOnClickListener {
+            coinDetailPresenter.getCoinsDetail(uuid)
+            Toast.makeText(
+                this@CoinDetailActivity,
+                "Click Retry",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     companion object {
@@ -92,6 +109,7 @@ class CoinDetailActivity : AppCompatActivity(), CoinDetailContractor.View {
 
     override fun updateViewCoinDetailData(coins: Coin) {
         nestedScrollViewCoinDetail.visibility = VISIBLE
+        layoutError.visibility = GONE
         coins.apply {
             tvNameHead.text = name
             tvNameData.text = name
@@ -121,5 +139,6 @@ class CoinDetailActivity : AppCompatActivity(), CoinDetailContractor.View {
 
     override fun showGetCoinsDetailFailed() {
         nestedScrollViewCoinDetail.visibility = GONE
+        layoutError.visibility = VISIBLE
     }
 }

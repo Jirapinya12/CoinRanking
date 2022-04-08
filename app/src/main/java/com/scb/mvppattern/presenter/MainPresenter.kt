@@ -23,6 +23,9 @@ class MainPresenter(view : CoinContractor.View): CoinContractor.Presenter {
     }
 
     override fun getCoinsFailed() {
-        view.showProgressBarLoading(isLoading = true)
+        view.apply {
+            showProgressBarLoading(isLoading = false)
+            showGetCoinsFailed()
+        }
     }
 }

@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/fake_white">
 
+    <include
+        layout="@layout/retry_error_layout" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollViewCoinDetail"
         android:visibility="gone"

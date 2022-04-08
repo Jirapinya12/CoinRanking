@@ -23,7 +23,7 @@ class CoinDetailPresenter(view: CoinDetailContractor.View) : CoinDetailContracto
 
     override fun getCoinsDetailFailed() {
         view.apply {
-            showProgressBarLoading(isLoading = true)
+            showProgressBarLoading(isLoading = false)
             showGetCoinsDetailFailed()
         }
     }
