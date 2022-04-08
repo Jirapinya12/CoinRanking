@@ -3,6 +3,7 @@ package com.scb.mvppattern.view
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -46,7 +47,10 @@ class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener
     @BindView(R.id.tvErrorTapToRetry)
     lateinit var tvErrorTapToRetry: TextView
 
-    lateinit var mainPresenter: MainPresenter
+    @BindView(R.id.btSearch)
+    lateinit var btSearch: ImageButton
+
+    private lateinit var mainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +58,7 @@ class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener
         ButterKnife.bind(this)
         mainPresenter = MainPresenter(this)
         initView()
+        initToolbar()
         tvErrorTapToRetry.setOnClickListener {
             mainPresenter.getAllCoins()
             Toast.makeText(
@@ -69,6 +74,11 @@ class MainActivity : AppCompatActivity(), CoinContractor.View, CoinClickListener
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = false
             mainPresenter.getAllCoins()
+        }
+    }
+
+    private fun initToolbar() {
+        btSearch.setOnClickListener {
         }
     }
 
