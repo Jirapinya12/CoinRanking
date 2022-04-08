@@ -6,6 +6,7 @@
     android:layout_marginLeft="15dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="15dp"
+    android:background="@color/card_color"
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp">
 
@@ -30,7 +31,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="18dp"
             android:text="Title"
-            android:textColor="@color/black"
+            android:textColor="@color/text_title_color"
             android:textSize="22dp"
             app:layout_constraintStart_toEndOf="@+id/iv"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +44,7 @@
             android:layout_marginTop="3dp"
             android:text="Description"
             android:textSize="16dp"
+            android:textColor="@color/text_desc_item_color"
             app:layout_constraintStart_toEndOf="@+id/iv"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 

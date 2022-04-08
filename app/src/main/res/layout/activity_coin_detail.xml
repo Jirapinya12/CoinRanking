@@ -4,22 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fake_white">
+    android:background="@color/bg">
 
-    <include
-        layout="@layout/retry_error_layout" />
+    <include layout="@layout/retry_error_layout" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollViewCoinDetail"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/fake_white"
             android:orientation="vertical">
 
             <TextView
@@ -28,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:textColor="@color/fake_black"
+                android:textColor="@color/text_title_color"
                 android:textSize="22dp"
                 tools:text="Bitcoin" />
 
@@ -44,7 +42,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/lighter_gray"
+                android:background="@color/line_color"
                 android:visibility="visible" />
 
             <RelativeLayout
@@ -54,11 +52,12 @@
 
                 <TextView
                     android:id="@+id/tvCoinDetail"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/coin_details"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_header_color"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/ivColor"
@@ -74,7 +73,6 @@
 
                 <TextView
                     android:id="@+id/tvColor"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/ivColor"
@@ -82,11 +80,12 @@
                     android:layout_toEndOf="@+id/ivColor"
                     android:layout_toRightOf="@+id/ivColor"
                     android:text="@string/color"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tvName"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/ivColor"
@@ -97,21 +96,23 @@
                     android:layout_toRightOf="@+id/tvColor"
                     android:gravity="end"
                     android:text="@string/name"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tvColorData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvColor"
                     android:layout_toEndOf="@+id/ivColor"
                     android:layout_toRightOf="@+id/ivColor"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="#f7931A" />
 
                 <TextView
                     android:id="@+id/tvNameData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvName"
@@ -120,6 +121,8 @@
                     android:layout_toEndOf="@+id/tvColorData"
                     android:layout_toRightOf="@+id/tvColorData"
                     android:gravity="end"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="BTC" />
 
             </RelativeLayout>
@@ -127,7 +130,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/lighter_gray"
+                android:background="@color/line_color"
                 android:visibility="visible" />
 
             <RelativeLayout
@@ -137,15 +140,15 @@
 
                 <TextView
                     android:id="@+id/tvBtcPrice"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btcPrice"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tvSymbol"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -154,19 +157,21 @@
                     android:layout_toRightOf="@+id/tvBtcPrice"
                     android:gravity="end"
                     android:text="@string/symbol"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tvBtcPriceData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvBtcPrice"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="1" />
 
                 <TextView
                     android:id="@+id/tvSymbolData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvSymbol"
@@ -175,6 +180,8 @@
                     android:layout_toEndOf="@+id/tvBtcPriceData"
                     android:layout_toRightOf="@+id/tvBtcPriceData"
                     android:gravity="end"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="BTC" />
 
             </RelativeLayout>
@@ -182,7 +189,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/lighter_gray"
+                android:background="@color/line_color"
                 android:visibility="visible" />
 
             <RelativeLayout
@@ -192,15 +199,15 @@
 
                 <TextView
                     android:id="@+id/tvMarketCap"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/marketCap"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/tvPrice"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -209,19 +216,21 @@
                     android:layout_toRightOf="@+id/tvMarketCap"
                     android:gravity="end"
                     android:text="@string/price"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/tvMarketCapData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvMarketCap"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="885063176691" />
 
                 <TextView
                     android:id="@+id/tvPriceData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvPrice"
@@ -230,6 +239,8 @@
                     android:layout_toEndOf="@+id/tvMarketCapData"
                     android:layout_toRightOf="@+id/tvMarketCapData"
                     android:gravity="end"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="46573.9087638882" />
 
             </RelativeLayout>
@@ -237,7 +248,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/lighter_gray"
+                android:background="@color/line_color"
                 android:visibility="visible" />
 
             <RelativeLayout
@@ -247,15 +258,15 @@
 
                 <TextView
                     android:id="@+id/tvChange"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/change"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tv24hVolume"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -264,19 +275,21 @@
                     android:layout_toRightOf="@+id/tvChange"
                     android:gravity="end"
                     android:text="@string/twenty_four_hVolume"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tvChangeData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvChange"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="1.28" />
 
                 <TextView
                     android:id="@+id/tv24hVolumeData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv24hVolume"
@@ -285,6 +298,8 @@
                     android:layout_toEndOf="@+id/tvChangeData"
                     android:layout_toRightOf="@+id/tvChangeData"
                     android:gravity="end"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="27270887710" />
 
             </RelativeLayout>
@@ -292,7 +307,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/lighter_gray"
+                android:background="@color/line_color"
                 android:visibility="visible" />
 
             <RelativeLayout
@@ -302,18 +317,20 @@
 
                 <TextView
                     android:id="@+id/tvCoinrankingUrl"
-                    style="@style/TextDarkGray20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/coinrankingUrl"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_title_color"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tvCoinrankingUrlData"
-                    style="@style/TextFakeBlack24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvCoinrankingUrl"
+                    android:textColor="@color/text_desc_color"
+                    android:textSize="16dp"
                     tools:text="https://coinranking.com/coin/Qwsogvtv82FCd+bitcoin-btc" />
 
             </RelativeLayout>

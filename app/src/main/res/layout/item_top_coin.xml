@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="15dp"
     android:layout_marginTop="10dp"
+    android:background="@color/card_color"
     app:cardCornerRadius="5dp"
     app:cardElevation="3dp">
 
@@ -16,8 +17,8 @@
             android:id="@+id/iv"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/ic_launcher"
             android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:text="Title"
-            android:textColor="@color/fake_black"
+            android:textColor="@color/text_title_color"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv"
