@@ -14,6 +14,8 @@
     <color name="fake_white">#F5F3F6</color>
 
     <color name="bg">#F5F3F6</color>
+    <color name="toolbar_color">#F8932C8E</color>
+    <color name="toolbar_text_color">#F8FFFFFF</color>
     <color name="dot_color">#F8932C8E</color>
     <color name="card_color">#222222</color>
     <color name="text_header_color">#D3353239</color>
